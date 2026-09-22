@@ -1,0 +1,58 @@
+# CODEOWNERS del repositorio SGRE (Sistema de Gestión de Recursos).
+# Cada línea es un patrón de archivos seguido de uno o más responsables.
+
+# Estos responsables son los dueños por defecto de todo el repositorio.
+# Salvo que una regla posterior tenga precedencia, @ale43 será
+# solicitado como revisor cada vez que alguien abra un pull request.
+*       @ale43
+
+# El orden importa: el último patrón que coincide tiene la mayor
+# precedencia. Si un pull request solo modifica archivos .java, se
+# solicita la revisión de giulianopr14 y no la del responsable global.
+*.java  giulianopr14@gmail.com #Código fuente del sistema.
+
+# También se pueden usar direcciones de correo. GitHub las usa para
+# buscar al usuario de la misma forma que con los autores de commits.
+*.sql   giulianopr14@gmail.com
+
+# Los documentos en Markdown los revisa la responsable de documentación.
+*.md    cmunoz@frsf.utn.edu.ar
+
+# En este ejemplo, @ale43 es dueño de todo lo que está en el directorio
+# .github en la raíz del repositorio y en sus subdirectorios
+# (CODEOWNERS, workflows de integración continua, plantillas de PR).
+/.github/ @ale43
+
+# Cualquier cambio en la configuración de la integración continua
+# requiere la aprobación de @ale43 o de giulianopr14.
+/.github/workflows/ @ale43 giulianopr14@gmail.com
+
+# El patrón `docs/*` coincide con archivos como `docs/glosario.md`
+# pero no con archivos más anidados como `docs/diseno/clases.md`.
+docs/* cmunoz@frsf.utn.edu.ar
+
+# cmunoz es dueña de cualquier archivo en el directorio `/docs` de la
+# raíz del repositorio y en todos sus subdirectorios.
+/docs/ cmunoz@frsf.utn.edu.ar
+
+# Los documentos de diseño los revisan cmunoz o giulianopr14, y los de
+# gestión de la configuración los revisa @ale43.
+/docs/diseno/ cmunoz@frsf.utn.edu.ar giulianopr14@gmail.com
+/docs/gcs/    @ale43
+
+# giulianopr14 es dueño de cualquier archivo en el directorio `/src`
+# de la raíz del repositorio, excepto el subdirectorio `/src/interfaz`,
+# que tiene su propia responsable, lgzeballos1.
+/src/          giulianopr14@gmail.com
+/src/interfaz/ lgzeballos1@gmail.com
+
+# Los scripts de base de datos requieren la aprobación de giulianopr14.
+/db/ giulianopr14@gmail.com
+
+# lgzeballos1 es dueño de cualquier archivo en un directorio `tests`,
+# como `/tests`, `/src/tests` o `/src/modelo/tests`.
+**/tests lgzeballos1@gmail.com
+
+# El archivo de ejemplos de configuración local queda sin responsable:
+# cualquier integrante con permiso de escritura puede aprobar sus cambios.
+/config/local.example.properties
